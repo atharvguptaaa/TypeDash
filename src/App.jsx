@@ -7,7 +7,7 @@ import Results from "./components/Results";
 
 function App() {
   const [inputValue, setInputValue] = useState("");
-  const [timeLeft, setTimeLeft] = useState(6);
+  const [timeLeft, setTimeLeft] = useState(60);
   const [isFirstChange, setFirstChange] = useState(false);
   
   
@@ -20,7 +20,7 @@ function App() {
   };
 
   const handleTryAgain=()=>{
-    setTimeLeft(6)
+    setTimeLeft(60)
     setInputValue("")
     setFirstChange(false)
     setCount(0)

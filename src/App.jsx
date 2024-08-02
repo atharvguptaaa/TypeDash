@@ -25,7 +25,10 @@ function App() {
     setFirstChange(false)
     setCount(0)
     setErrCount(0)
-    // setWords(text.split(/\s+/))
+    const text =
+  "With that I ask why is it that no one noticed that I was carrying my own burdens like them How is it that I feel significant to others yet not equally valued in return I must have been great at concealing whatever it was they must’ve really been that important to me What if I can’t be there for you anymore Will you be okay Will you be able to navigate through life without me I hope you will because I’ll only hate myself if I make your life more miserable by choosing myself Are you going to look for me when I’m gone I’m sure you won’t I don’t think I’m that special But I hope you know I’ll miss you I may be tired but I’ll never forget how rewarding it was that I was once the person you look for when the tides crash on your shores and you need a space to tell you that it’s okay I wish I heard it from you too but I’m done waiting It sucks because when it rains there’s me and when the sun shines again I’m not even in the picture"
+ 
+    setWords(text.split(/\s+/))
     setSubarray(words.slice(count, count + 5))
 
   }

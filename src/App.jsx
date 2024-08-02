@@ -7,7 +7,7 @@ import Results from "./components/Results";
 
 function App() {
   const [inputValue, setInputValue] = useState("");
-  const [timeLeft, setTimeLeft] = useState(60);
+  const [timeLeft, setTimeLeft] = useState(6);
   const [isFirstChange, setFirstChange] = useState(false);
   
   
@@ -25,8 +25,9 @@ function App() {
     setFirstChange(false)
     setCount(0)
     setErrCount(0)
-    setWords(text.split(/\s+/))
+    // setWords(text.split(/\s+/))
     setSubarray(words.slice(count, count + 5))
+
   }
 
   const [count, setCount] = useState(0);
@@ -38,10 +39,9 @@ function App() {
 
   useEffect(() => {
     if (timeLeft > 0 && isFirstChange) {
-      const timeId = setTimeout(() => {
+      setTimeout(() => {
         setTimeLeft(timeLeft - 1);
       }, 1000);
-      console.log(timeId);
       //return () => clearTimeout(timeId);
     }
   }, [isFirstChange, timeLeft]);

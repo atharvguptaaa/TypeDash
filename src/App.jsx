@@ -7,8 +7,11 @@ import Results from "./components/Results";
 
 function App() {
   const [inputValue, setInputValue] = useState("");
-  const [timeLeft, setTimeLeft] = useState(60);
+  const [timeLeft, setTimeLeft] = useState(6);
   const [isFirstChange, setFirstChange] = useState(false);
+  
+  
+  
   const handleInput = (val) => {
     if (!isFirstChange) {
       setFirstChange(true);
@@ -23,7 +26,7 @@ function App() {
     setCount(0)
     setErrCount(0)
     setWords(text.split(/\s+/))
-    setSubarray([])
+    setSubarray(words.slice(count, count + 5))
   }
 
   const [count, setCount] = useState(0);

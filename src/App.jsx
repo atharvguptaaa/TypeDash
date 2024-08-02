@@ -20,7 +20,7 @@ function App() {
   };
 
   const handleTryAgain=()=>{
-    setTimeLeft(60)
+    setTimeLeft(6)
     setInputValue("")
     setFirstChange(false)
     setCount(0)

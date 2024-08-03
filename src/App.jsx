@@ -104,9 +104,9 @@ function App() {
       </div>
   
       {timeLeft === 0 && (
-        <div className="mt-10">
+        
           <Results all={count} wrong={errCount} btn={handleTryAgain} />
-        </div>
+        
       )}
     </>
   );

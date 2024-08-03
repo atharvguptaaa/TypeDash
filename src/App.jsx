@@ -8,7 +8,7 @@ import useFetch from "./CustomHook";
 
 function App() {
   const [inputValue, setInputValue] = useState("");
-  const [timeLeft, setTimeLeft] = useState(6);
+  const [timeLeft, setTimeLeft] = useState(60);
   const [isFirstChange, setFirstChange] = useState(false);
 
   const [count, setCount] = useState(0);
@@ -36,7 +36,7 @@ function App() {
   };
 //FUNCTION TO RESET ALL ON TRY AGAIN
   const handleTryAgain=()=>{
-    setTimeLeft(6)
+    setTimeLeft(60)
     setInputValue("")
     setFirstChange(false)
     setCount(0)

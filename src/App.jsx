@@ -7,7 +7,7 @@ import Results from "./components/Results";
 
 function App() {
   const [inputValue, setInputValue] = useState("");
-  const [timeLeft, setTimeLeft] = useState(6);
+  const [timeLeft, setTimeLeft] = useState(60);
   const [isFirstChange, setFirstChange] = useState(false);
   
   
@@ -57,7 +57,6 @@ function App() {
     }
     else if(timeLeft > 0 && inputValue !== (words[count]+" ") && inputValue.includes(" "))
     {
-      console.log("bobby");
       setCount(count + 1);
       setWords((prevWords) => prevWords.slice(0));
       setInputValue("");
@@ -72,9 +71,9 @@ function App() {
     }
     setSubarray(getSubarray(words, count));
 
-    console.log("Ipvalue in useEffect- " + inputValue);
-    console.log("disply in useEffect- " + words[count]);
-    console.log("count in useEffect- " + count);
+    // console.log("Ipvalue in useEffect- " + inputValue);
+    // console.log("disply in useEffect- " + words[count]);
+    // console.log("count in useEffect- " + count);
     // console.log(words);
   }, [inputValue]);
 

@@ -7,7 +7,7 @@ import Results from "./components/Results";
 
 function App() {
   const [inputValue, setInputValue] = useState("");
-  const [timeLeft, setTimeLeft] = useState(60);
+  const [timeLeft, setTimeLeft] = useState(6);
   const [isFirstChange, setFirstChange] = useState(false);
   
   
@@ -64,6 +64,9 @@ function App() {
       setErrCount(errCount+1)
     }
 
+
+    
+
     function getSubarray(words, count) {
       return words.slice(count, count + 5);
     }
@@ -74,6 +77,14 @@ function App() {
     console.log("count in useEffect- " + count);
     // console.log(words);
   }, [inputValue]);
+
+    //try useEffect here
+    useEffect(() => {
+      function getSubarray(words, count) {
+        return words.slice(count, count + 5);
+      }
+      setSubarray(getSubarray(words, count));
+    }, [handleTryAgain])
 
   return (
     <>  

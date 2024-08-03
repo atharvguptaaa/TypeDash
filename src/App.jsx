@@ -58,7 +58,7 @@ function App() {
     }
   }, [isFirstChange, timeLeft]);
 
-  //USEEFECT FOR WHEN INPUTVALUE IS CHANGED
+  //USEEFECT FOR WHEN INPUTVALUE IS CHANGEDC
   useEffect(() => {
     if (timeLeft > 0 && inputValue === words[count] + " ") {    // IF WORDS MATCH
       setCount(count + 1);

@@ -4,72 +4,79 @@ import Displaytext from "./components/Displaytext";
 import { useState, useEffect} from "react";
 import Timer from "./components/Timer";
 import Results from "./components/Results";
+import useFetch from "./CustomHook";
 
 function App() {
   const [inputValue, setInputValue] = useState("");
-  const [timeLeft, setTimeLeft] = useState(60);
+  const [timeLeft, setTimeLeft] = useState(6);
   const [isFirstChange, setFirstChange] = useState(false);
-  
-  
-  
+
+  const [count, setCount] = useState(0);
+  const [errCount, setErrCount] = useState(0);
+  const [usedAgain,setUsedAgain]=useState(0);
+
+  const text=useFetch(usedAgain).text;
+ 
+  const [words, setWords] = useState([]);
+  const [subarray, setSubarray] = useState([]);
+
+  useEffect(() => {
+    if (text) {
+      setWords(text.split(/\s+/));
+    }
+  }, [text]);
+
+
+  // FUNCTION TO SET FIRSTCHANGE TRUE AND SET VALUE IN INPUTVALUE
   const handleInput = (val) => {
     if (!isFirstChange) {
       setFirstChange(true);
     }
     setInputValue(val);
   };
-
+//FUNCTION TO RESET ALL ON TRY AGAIN
   const handleTryAgain=()=>{
-    setTimeLeft(60)
+    setTimeLeft(6)
     setInputValue("")
     setFirstChange(false)
     setCount(0)
     setErrCount(0)
-  //   const text =
-  // "With that I ask why is it that no one noticed that I was carrying my own burdens like them How is it that I feel significant to others yet not equally valued in return I must have been great at concealing whatever it was they must’ve really been that important to me What if I can’t be there for you anymore Will you be okay Will you be able to navigate through life without me I hope you will because I’ll only hate myself if I make your life more miserable by choosing myself Are you going to look for me when I’m gone I’m sure you won’t I don’t think I’m that special But I hope you know I’ll miss you I may be tired but I’ll never forget how rewarding it was that I was once the person you look for when the tides crash on your shores and you need a space to tell you that it’s okay I wish I heard it from you too but I’m done waiting It sucks because when it rains there’s me and when the sun shines again I’m not even in the picture"
- 
+    setUsedAgain(prev=>prev+1)
+    
   //   setWords(text.split(/\s+/))
   //   setSubarray(words.slice(count, count + 5))
-
   }
 
-  const [count, setCount] = useState(0);
-  const [errCount, setErrCount] = useState(0);
-  const text =
-  "With that I ask why is it that no one noticed that I was carrying my own burdens like them How is it that I feel significant to others yet not equally valued in return I must have been great at concealing whatever it was they must’ve really been that important to me What if I can’t be there for you anymore Will you be okay Will you be able to navigate through life without me I hope you will because I’ll only hate myself if I make your life more miserable by choosing myself Are you going to look for me when I’m gone I’m sure you won’t I don’t think I’m that special But I hope you know I’ll miss you I may be tired but I’ll never forget how rewarding it was that I was once the person you look for when the tides crash on your shores and you need a space to tell you that it’s okay I wish I heard it from you too but I’m done waiting It sucks because when it rains there’s me and when the sun shines again I’m not even in the picture"
-  const [words, setWords] = useState(text.split(/\s+/));
-  const [subarray, setSubarray] = useState([]);
-
+  
+// USEEFFECT FOR TIMER
   useEffect(() => {
     if (timeLeft > 0 && isFirstChange) {
-      setTimeout(() => {
+      const timeId=setTimeout(() => {
         setTimeLeft(timeLeft - 1);
       }, 1000);
-      //return () => clearTimeout(timeId);
+      return () => clearTimeout(timeId);
     }
   }, [isFirstChange, timeLeft]);
 
+  //USEEFECT FOR WHEN INPUTVALUE IS CHANGED
   useEffect(() => {
-    if (timeLeft > 0 && inputValue === words[count] + " ") {
+    if (timeLeft > 0 && inputValue === words[count] + " ") {    // IF WORDS MATCH
       setCount(count + 1);
       setWords((prevWords) => prevWords.slice(0));
       setInputValue("");
     }
-    else if(timeLeft > 0 && inputValue !== (words[count]+" ") && inputValue.includes(" "))
-    {
+    else if(timeLeft > 0 && inputValue !== (words[count]+" ") && inputValue.includes(" ")) 
+    {                                                           //IF WORDS DONT MATCH        
       setCount(count + 1);
       setWords((prevWords) => prevWords.slice(0));
       setInputValue("");
       setErrCount(errCount+1)
     }
 
-
-    
-
-    function getSubarray(words, count) {
-      return words.slice(count, count + 5);
-    }
-    setSubarray(getSubarray(words, count));
+    // function getSubarray(words, count) {
+    //   return words.slice(count, count + 5);
+    // }
+    // setSubarray(getSubarray(words, count));
 
     // console.log("Ipvalue in useEffect- " + inputValue);
     // console.log("disply in useEffect- " + words[count]);
@@ -77,13 +84,13 @@ function App() {
     // console.log(words);
   }, [inputValue]);
 
-    //try useEffect here
+    //USEEFFECT TO GET SUBARRAY
     useEffect(() => {
       function getSubarray(words, count) {
         return words.slice(count, count + 5);
       }
       setSubarray(getSubarray(words, count));
-    }, [handleTryAgain])
+    }, [words,count])
 
   return (
     <>  

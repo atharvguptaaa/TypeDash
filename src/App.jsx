@@ -87,7 +87,7 @@ function App() {
 
   return (
     <>  
-      <h1 className="text-center text-3xl font-bold text-gray-800 mt-1 mb-5">Type..</h1>
+      <h1 className="text-center text-3xl font-bold text-gray-800 mt-1 mb-5">TypeDash!</h1>
   
       <div className="flex flex-col items-center justify-center space-y-6">
         <div className="bg-blue-100 p-5 text-xl rounded-lg shadow-md w-full max-w-lg">

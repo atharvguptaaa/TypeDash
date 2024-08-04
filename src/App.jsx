@@ -1,14 +1,14 @@
 import "./App.css";
 import Input from "./components/Input";
 import Displaytext from "./components/Displaytext";
-import { useState, useEffect} from "react";
+import { useState, useEffect, useRef} from "react";
 import Timer from "./components/Timer";
 import Results from "./components/Results";
 import useFetch from "./CustomHook";
 
 function App() {
   const [inputValue, setInputValue] = useState("");
-  const [timeLeft, setTimeLeft] = useState(60);
+  const [timeLeft, setTimeLeft] = useState(2);
   const [isFirstChange, setFirstChange] = useState(false);
 
   const [count, setCount] = useState(0);
@@ -19,6 +19,7 @@ function App() {
  
   const [words, setWords] = useState([]);
   const [subarray, setSubarray] = useState([]);
+  const inputRef=useRef(null);
 
   useEffect(() => {
     if (text) {
@@ -63,12 +64,26 @@ function App() {
     if (timeLeft > 0 && inputValue === words[count] + " ") {    // IF WORDS MATCH
       setCount(count + 1);
       setWords((prevWords) => prevWords.slice(0));
+      
+      inputRef.current.style.backgroundColor = "#b2edc2";
+      setTimeout(() => {
+        inputRef.current.style.backgroundColor = "white";
+      }, 100);
+          
+      
+
       setInputValue("");
     }
     else if(timeLeft > 0 && inputValue !== (words[count]+" ") && inputValue.includes(" ")) 
     {                                                           //IF WORDS DONT MATCH        
       setCount(count + 1);
       setWords((prevWords) => prevWords.slice(0));
+
+      inputRef.current.style.backgroundColor = "#edafc5";
+      setTimeout(() => {
+        inputRef.current.style.backgroundColor = "white";
+      }, 100);
+
       setInputValue("");
       setErrCount(errCount+1)
     }
@@ -106,7 +121,7 @@ function App() {
         </div>
   
         <div className="bg-red-100 text-xl p-9  rounded-lg shadow-md w-full max-w-lg">
-          <Input onInputChange={handleInput} val={inputValue} />
+          <Input onInputChange={handleInput} val={inputValue} ref={inputRef}/>
         </div>
       </div>
   

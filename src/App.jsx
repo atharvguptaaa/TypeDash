@@ -65,7 +65,7 @@ function App() {
       setCount(count + 1);
       setWords((prevWords) => prevWords.slice(0));
       
-      inputRef.current.style.backgroundColor = "#b2edc2";
+      inputRef.current.style.backgroundColor = "#bce8c8";
       setTimeout(() => {
         inputRef.current.style.backgroundColor = "white";
       }, 100);
@@ -107,30 +107,31 @@ function App() {
       setSubarray(getSubarray(words, count));
     }, [words,count])
 
-    return (
-      <>  
-        <h1 className="text-center text-2xl md:text-3xl font-bold text-gray-800 mt-1 mb-5">TypeDash!</h1>
-    
-        <div className="flex flex-col items-center justify-center space-y-4 md:space-y-6">
-          <div className="bg-blue-100 p-4 md:p-5 text-lg md:text-xl rounded-lg shadow-md w-full max-w-lg">
-            <Timer time={timeLeft} />
-          </div>
-    
-          <div className="bg-green-100 p-4 md:p-5 text-lg md:text-xl rounded-lg shadow-md w-full max-w-lg">
-            <Displaytext displayValue={subarray.join(" ")} />
-          </div>
-    
-          <div className="bg-red-100 p-6 md:p-9 text-lg md:text-xl rounded-lg shadow-md w-full max-w-lg">
-            <Input onInputChange={handleInput} val={inputValue} ref={inputRef}/>
-          </div>
+  return (
+    <>  
+      <h1 className="text-center text-3xl font-bold text-gray-800 mt-1 mb-5">TypeDash!</h1>
+  
+      <div className="flex flex-col items-center justify-center space-y-6">
+        <div className="bg-blue-100 p-5 text-xl rounded-lg shadow-md w-full max-w-lg">
+          <Timer time={timeLeft} />
         </div>
-    
-        {timeLeft === 0 && (
+  
+        <div className="bg-green-100 text-xl p-5 rounded-lg shadow-md w-full max-w-lg">
+          <Displaytext displayValue={subarray.join(" ")} />
+        </div>
+  
+        <div className="bg-red-100 text-xl p-9  rounded-lg shadow-md w-full max-w-lg">
+          <Input onInputChange={handleInput} val={inputValue} ref={inputRef}/>
+        </div>
+      </div>
+  
+      {timeLeft === 0 && (
+        
           <Results all={count} wrong={errCount} btn={handleTryAgain} />
-        )}
-      </>
-    );
-    
+        
+      )}
+    </>
+  );
   
 }
 

@@ -8,7 +8,7 @@ import useFetch from "./CustomHook";
 
 function App() {
   const [inputValue, setInputValue] = useState("");
-  const [timeLeft, setTimeLeft] = useState(2);
+  const [timeLeft, setTimeLeft] = useState(60);
   const [isFirstChange, setFirstChange] = useState(false);
 
   const [count, setCount] = useState(0);

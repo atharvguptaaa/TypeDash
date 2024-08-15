@@ -1,8 +1,8 @@
 # TypeDash! 🖋️💨
 
-### Working Link - [Click Here!](https://typing-speed-test-chi.vercel.app/)
-
 **TypeDash!** is a typing speed calculator that measures your typing speed in words per minute (WPM) and accuracy. It fetches random sentences from a custom API you built and deployed, offering a unique challenge every time. The app is built using **React** and **Tailwind CSS**, providing a clean and responsive user interface.
+
+### Working Link - [Click Here!](https://typing-speed-test-chi.vercel.app/)
 
 ## 🚀 Features
 

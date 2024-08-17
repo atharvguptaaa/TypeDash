@@ -11,6 +11,8 @@
 - **Responsive Design**: Tailwind CSS ensures that the UI adapts smoothly across different screen sizes.
 - **Modular Components**: Reusable and well-structured React components.
 
+  ![image](https://github.com/user-attachments/assets/920193f9-e54f-403f-b785-bd24b5fab3b5)
+
 ## 📂 Project Structure
 
 ```bash
